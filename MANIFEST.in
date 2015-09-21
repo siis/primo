@@ -17,7 +17,9 @@
 
 #exclude linking/*.pyx
 include *.txt
-include plot_links.py
+include primo.py
+include make_plots_and_stats.py
+include performance_experiments.py
 include setup.py
 include linking/*.c
 include linking/*.pxd

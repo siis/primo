@@ -53,8 +53,8 @@ def ScanDir(directory, file_extension, files=[]):
       ScanDir(file_path, file_extension, files)
   return files
 
-NAME = 'PRIMO'
-VERSION = '0.1'
+NAME = 'primo'
+VERSION = '0.1.0'
 DESCR = 'ICC resolution package.'
 URL = 'http://siis.cse.psu.edu/primo/'
 
