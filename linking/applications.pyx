@@ -26,7 +26,7 @@ from linking import ic3_data_pb2
 cdef set SAMPLES = set()
 
 
-def MakeApplication(application_pb):
+def MakeApplication(application_pb, validate):
   """Generates an Application object from a protobuf.
 
   Args:
@@ -52,7 +52,7 @@ def MakeApplication(application_pb):
                                              sample)
   cdef list components = []
   for pb_component in application_pb.components:
-    components.append(MakeComponent(pb_component, application))
+    components.append(MakeComponent(pb_component, application, validate))
   application.components = components
 
   cdef tuple component_maps

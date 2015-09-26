@@ -18,7 +18,8 @@
 from linking.applications cimport Application
 
 cdef int GetSkippedFilterCount()
-cdef Component MakeComponent(object component_pb, Application application)
+cdef Component MakeComponent(object component_pb, Application application,
+                             bint validate)
 
 cdef class Component(object):
   cdef readonly unicode name

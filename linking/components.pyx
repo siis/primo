@@ -16,8 +16,6 @@
 # limitations under the License.
 """A class and factory for Android application components."""
 
-import gflags
-
 from linking.applications cimport Application
 from linking.target_data cimport AddComponent
 from linking.intent_filters cimport IntentFilter
@@ -25,19 +23,18 @@ from linking.intent_filters cimport MakeIntentFilter
 from linking.intents cimport MakeComponentIntent
 
 
-FLAGS = gflags.FLAGS
-
-
 cdef int _id = 0
 cdef int _skipped_imprecise_filters = 0
 
 
-cdef Component MakeComponent(object component_pb, Application application):
+cdef Component MakeComponent(object component_pb, Application application,
+                             bint validate):
   """Generates a Component object from a protobuf.
 
   Args:
     component_pb: A Component protobuf object.
     application: An Application object.
+    validate: True if validation is being performed.
 
   Returns: A linking.Component object.
   """
@@ -68,7 +65,7 @@ cdef Component MakeComponent(object component_pb, Application application):
 
   for intent_filter_pb in component_pb.intent_filters:
     intent_filter = MakeIntentFilter(intent_filter_pb, result)
-    if intent_filter.IsPrecise() or not FLAGS.validate:
+    if intent_filter.IsPrecise() or not validate:
       filters.append(intent_filter)
     else:
       global _skipped_imprecise_filters

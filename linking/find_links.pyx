@@ -100,7 +100,7 @@ def FindLinks(protobufs, protodirs=None, skip_empty=False, stats=None,
   cdef dict intent_links = {}
 
   applications, components, intents, intent_filters = fetch_data.FetchData(
-      protobufs, protodirs)
+      protobufs, protodirs, validate)
   PrepareForQueries(applications)
 
   if stats is not None:

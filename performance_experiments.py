@@ -53,7 +53,7 @@ def RunExperiments(protobufs, data_points, file_path):
     if size < protobuf_count:
       for _ in range(count):
         RunExperimentForSize(protobufs, size, file_path)
-        LOGGER.info('Processed %s apps.')
+        LOGGER.info('Processed %s apps.', size)
 
   RunExperimentForSize(protobufs, protobuf_count, file_path)
 
@@ -80,8 +80,6 @@ def RunExperimentForSize(protobufs, size, stats):
                             'skip_empty': True})
   process.start()
   process.join()
-
-  LOGGER.info('test %s', os.getpid())
 
 
 def LoadDataPoints(data_points_path):
