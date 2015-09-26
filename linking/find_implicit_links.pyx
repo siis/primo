@@ -121,8 +121,6 @@ cdef class ImplicitLinkFinder(object):
 
     intent_filters = self.PackageTest(current_intent, intent_filters)
     if not intent_filters:
-      LOGGER.warn('The package %s is listed as destination but is not '
-                  'included in our apps.', current_intent.dpackage)
       return None
 
     cdef list targets = []
