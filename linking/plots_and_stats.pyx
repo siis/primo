@@ -26,10 +26,12 @@ import locale
 import logging
 import os.path
 
+import matplotlib
+matplotlib.use('Agg')
+
 from matplotlib import pyplot
 from matplotlib import rcParams
 import bloscpack as bp
-import matplotlib
 import numpy as np
 
 from linking.write_results cimport Row
@@ -43,7 +45,7 @@ rcParams['ytick.labelsize'] = FONT_SIZE
 rcParams['legend.fontsize'] = FONT_SIZE
 rcParams['font.family'] = 'serif'
 # IF UNAME_SYSNAME == "Darwin":
-rcParams['font.serif'] = ['Times New Roman']
+rcParams['font.family'] = 'Times New Roman'
 # ELSE:
 #   path = '/usr/share/fonts/truetype/msttcorefonts/Times_New_Roman.ttf'
 #   rcParams['font.serif'] = ['Times_New_Roman']
