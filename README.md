@@ -2,7 +2,7 @@ The PRIMO tool for static Intent resolution and probabilistic value inference.
 
 # Installation
 
-```bash
+```shell
 $ sudo python setup.py build
 $ sudo python setup.py install
 ```
@@ -14,7 +14,7 @@ For further instructions, please see http://siis.cse.psu.edu/primo
 # Usage
 
 
-```bash
+```shell
 $ primo --protodir ic3-output/ --dumpintentlinks links.blp
 
 $ mkdir stats
