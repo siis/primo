@@ -97,10 +97,6 @@ if __name__ == "__main__":
 
     # And build up the set of Extension objects.
     extensions = [MakeExtension(name, extension) for name in ext_names]
-    print(extension)
-    print(len(extensions))
-    for extension in extensions:
-        print(extension.sources)
 
     setup(packages=PACKAGES,
                 name=NAME,
