@@ -21,36 +21,36 @@ DEF DEBUG = False
 cimport cython
 cimport numpy as np
 
-from linking.target_data import BASE_TYPE
-from linking.util import Powerset
+from primo.linking.target_data import BASE_TYPE
+from primo.linking.util import Powerset
 import logging
 import numpy as np
 import time
 
-from linking.intent_data cimport GetAttributeMaps
-from linking.intent_data cimport GetPreciseIntents
-from linking.target_data cimport GetExportedFilters
-from linking.target_data cimport GetFiltersOfApp
-from linking.target_data cimport GetFiltersWithUsedPermission
-from linking.target_data cimport GetFiltersWithAction
-from linking.target_data cimport GetFiltersWithAnyAction
-from linking.target_data cimport GetFiltersWithBaseTypes
-from linking.target_data cimport GetFiltersWithCategories
-from linking.target_data cimport GetFiltersWithHost
-from linking.target_data cimport GetFiltersWithKind
-from linking.target_data cimport GetFiltersWithPath
-from linking.target_data cimport GetFiltersWithPort
-from linking.target_data cimport GetFiltersWithScheme
-from linking.target_data cimport GetFiltersWithType
-from linking.target_data cimport GetFiltersWithTypes
-from linking.target_data cimport GetFiltersWithoutType
-from linking.target_data cimport GetNoDataFilters
-from linking.intent_filters cimport IntentFilter
-from linking.intents cimport ComponentIntent
-from linking.intents cimport Intent
-from linking.attribute_matching cimport NonEmptyIntersection
+from primo.linking.intent_data cimport GetAttributeMaps
+from primo.linking.intent_data cimport GetPreciseIntents
+from primo.linking.target_data cimport GetExportedFilters
+from primo.linking.target_data cimport GetFiltersOfApp
+from primo.linking.target_data cimport GetFiltersWithUsedPermission
+from primo.linking.target_data cimport GetFiltersWithAction
+from primo.linking.target_data cimport GetFiltersWithAnyAction
+from primo.linking.target_data cimport GetFiltersWithBaseTypes
+from primo.linking.target_data cimport GetFiltersWithCategories
+from primo.linking.target_data cimport GetFiltersWithHost
+from primo.linking.target_data cimport GetFiltersWithKind
+from primo.linking.target_data cimport GetFiltersWithPath
+from primo.linking.target_data cimport GetFiltersWithPort
+from primo.linking.target_data cimport GetFiltersWithScheme
+from primo.linking.target_data cimport GetFiltersWithType
+from primo.linking.target_data cimport GetFiltersWithTypes
+from primo.linking.target_data cimport GetFiltersWithoutType
+from primo.linking.target_data cimport GetNoDataFilters
+from primo.linking.intent_filters cimport IntentFilter
+from primo.linking.intents cimport ComponentIntent
+from primo.linking.intents cimport Intent
+from primo.linking.attribute_matching cimport NonEmptyIntersection
 
-include 'linking/constants.pxi'
+include 'primo/linking/constants.pxi'
 
 
 DTYPE = np.int8

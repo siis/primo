@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from linking.intents cimport Intent
+from primo.linking.intents cimport Intent
 
 cdef void UpdateImpreciseDistribution(Intent intent)
 cdef void MakeRandomImprecision(Intent intent)

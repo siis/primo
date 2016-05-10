@@ -24,15 +24,15 @@ import logging
 import numpy as np
 import time
 
-from linking.applications cimport Application
-from linking.components cimport Component
-from linking.target_data cimport GetAppsMatching
-from linking.target_data cimport GetComponentsOfApp
-from linking.target_data cimport GetComponentsWithKind
-from linking.target_data cimport GetComponentsWithName
-from linking.target_data cimport GetExportedComponentCount
-from linking.target_data cimport GetExportedComponents
-from linking.intents cimport Intent
+from primo.linking.applications cimport Application
+from primo.linking.components cimport Component
+from primo.linking.target_data cimport GetAppsMatching
+from primo.linking.target_data cimport GetComponentsOfApp
+from primo.linking.target_data cimport GetComponentsWithKind
+from primo.linking.target_data cimport GetComponentsWithName
+from primo.linking.target_data cimport GetExportedComponentCount
+from primo.linking.target_data cimport GetExportedComponents
+from primo.linking.intents cimport Intent
 
 
 DTYPE = np.int8

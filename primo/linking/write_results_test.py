@@ -28,10 +28,10 @@ import unittest
 sys.path.append(os.path.join(os.path.dirname(os.path.realpath(__file__)),
                              '..'))
 
-from linking import write_results
-from linking.applications import Application
-from linking.intents import ComponentIntent
-from linking.intents import Intent
+from primo.linking import write_results
+from primo.linking.applications import Application
+from primo.linking.intents import ComponentIntent
+from primo.linking.intents import Intent
 
 
 class MockTarget(object):

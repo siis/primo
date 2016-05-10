@@ -25,7 +25,7 @@ import sys
 
 import gflags
 
-from linking.plots_and_stats import MakePlotsAndStats
+from primo.linking.plots_and_stats import MakePlotsAndStats
 
 
 FLAGS = gflags.FLAGS

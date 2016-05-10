@@ -15,12 +15,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 """Application class and factory."""
-from linking.components cimport Component
-from linking.components cimport MakeComponent
-from linking.intents cimport ComponentIntent
-from linking.attribute_matching cimport AttributeMap
+from primo.linking.components cimport Component
+from primo.linking.components cimport MakeComponent
+from primo.linking.intents cimport ComponentIntent
+from primo.linking.attribute_matching cimport AttributeMap
 
-from linking import ic3_data_pb2
+from primo.linking import ic3_data_pb2
 
 
 cdef set SAMPLES = set()

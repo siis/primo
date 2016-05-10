@@ -16,21 +16,21 @@
 # limitations under the License.
 """Class and factory for Intent."""
 
-from linking.applications cimport Application
-from linking.components cimport Component
-from linking.intent_data cimport AddImpreciseIntent
-from linking.intent_data cimport AddPreciseIntent
-from linking.target_data cimport GetTargetCountForValue
+from primo.linking.applications cimport Application
+from primo.linking.components cimport Component
+from primo.linking.intent_data cimport AddImpreciseIntent
+from primo.linking.intent_data cimport AddPreciseIntent
+from primo.linking.target_data cimport GetTargetCountForValue
 
 from collections import Counter
 
-from linking import ic3_data_pb2
-from linking.target_data import CLASS
-from linking.target_data import KIND
-from linking.target_data import PACKAGE
-from linking.target_data import USED_PERMISSIONS
+from primo.linking import ic3_data_pb2
+from primo.linking.target_data import CLASS
+from primo.linking.target_data import KIND
+from primo.linking.target_data import PACKAGE
+from primo.linking.target_data import USED_PERMISSIONS
 
-include 'linking/constants.pxi'
+include 'primo/linking/constants.pxi'
 
 
 cdef dict _INTENT_COUNTERS = {ic3_data_pb2.ACTION: Counter(),

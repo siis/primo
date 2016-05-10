@@ -20,8 +20,8 @@ from google.protobuf import text_format
 import logging
 import os
 
-from linking import applications
-from linking import ic3_data_pb2
+from primo.linking import applications
+from primo.linking import ic3_data_pb2
 
 
 LOGGER = logging.getLogger(__name__)

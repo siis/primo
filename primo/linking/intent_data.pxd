@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from linking.intents cimport ComponentIntent
+from primo.linking.intents cimport ComponentIntent
 
 cdef void AddPreciseIntent(ComponentIntent intent)
 cdef void AddImpreciseIntent(ComponentIntent intent)

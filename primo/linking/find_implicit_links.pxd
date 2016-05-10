@@ -16,9 +16,9 @@
 # limitations under the License.
 
 cimport numpy as np
-from linking.intent_filters cimport IntentFilter
-from linking.intents cimport ComponentIntent
-from linking.intents cimport Intent
+from primo.linking.intent_filters cimport IntentFilter
+from primo.linking.intents cimport ComponentIntent
+from primo.linking.intents cimport Intent
 
 ctypedef np.int8_t DTYPE_t
 

@@ -15,8 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from linking.applications cimport Application
-from linking.components cimport Component
+from primo.linking.applications cimport Application
+from primo.linking.components cimport Component
 
 cdef class Intent(object):
   cdef readonly unicode permission

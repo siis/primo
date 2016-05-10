@@ -34,7 +34,7 @@ from matplotlib import rcParams
 import bloscpack as bp
 import numpy as np
 
-from linking.write_results cimport Row
+from primo.linking.write_results cimport Row
 
 
 FONT_SIZE = 22
