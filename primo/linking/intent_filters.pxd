@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from linking.components cimport Component
+from primo.linking.components cimport Component
 
 cdef IntentFilter MakeIntentFilter(object intent_filter_pb,
                                    Component component)

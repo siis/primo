@@ -16,8 +16,8 @@
 # limitations under the License.
 
 cimport numpy as np
-from linking.components cimport Component
-from linking.intents cimport Intent
+from primo.linking.components cimport Component
+from primo.linking.intents cimport Intent
 
 ctypedef np.int8_t DTYPE_t
 

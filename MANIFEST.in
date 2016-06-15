@@ -15,13 +15,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#exclude linking/*.pyx
+#exclude primo/linking/*.pyx
 include *.txt
-include primo.py
-include make_plots_and_stats.py
-include performance_experiments.py
+include bin/primo
+include bin/make_plots_and_stats
+include bin/performance_experiments
 include setup.py
-include linking/*.c
-include linking/*.pxd
-include linking/*.pxi
-include linking/*.py
+include primo/linking/*.c
+include primo/linking/*.pxd
+include primo/linking/*.pxi
+include primo/linking/*.py

@@ -16,11 +16,11 @@
 # limitations under the License.
 """A class and factory for Android application components."""
 
-from linking.applications cimport Application
-from linking.target_data cimport AddComponent
-from linking.intent_filters cimport IntentFilter
-from linking.intent_filters cimport MakeIntentFilter
-from linking.intents cimport MakeComponentIntent
+from primo.linking.applications cimport Application
+from primo.linking.target_data cimport AddComponent
+from primo.linking.intent_filters cimport IntentFilter
+from primo.linking.intent_filters cimport MakeIntentFilter
+from primo.linking.intents cimport MakeComponentIntent
 
 
 cdef int _id = 0

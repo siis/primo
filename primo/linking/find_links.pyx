@@ -24,18 +24,18 @@ import traceback
 
 import gflags
 
-from linking.find_explicit_links cimport ExplicitLinkFinder
-from linking.find_implicit_links cimport ImplicitLinkFinder
-from linking.target_data cimport PrepareForQueries
-from linking.intent_data cimport GetImpreciseComponentIntents
-from linking.intent_data cimport GetPreciseComponentIntents
-from linking.intents cimport ComponentIntent
-from linking.intents cimport Intent
-from linking.validation cimport PerformValidation
+from primo.linking.find_explicit_links cimport ExplicitLinkFinder
+from primo.linking.find_implicit_links cimport ImplicitLinkFinder
+from primo.linking.target_data cimport PrepareForQueries
+from primo.linking.intent_data cimport GetImpreciseComponentIntents
+from primo.linking.intent_data cimport GetPreciseComponentIntents
+from primo.linking.intents cimport ComponentIntent
+from primo.linking.intents cimport Intent
+from primo.linking.validation cimport PerformValidation
 
-from linking import fetch_data
-from linking import intents as intents_mod
-from linking import write_results
+from primo.linking import fetch_data
+from primo.linking import intents as intents_mod
+from primo.linking import write_results
 
 
 gflags.DEFINE_boolean('computeattributes', True, 'Compute attributes.')

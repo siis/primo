@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from linking.applications cimport Application
+from primo.linking.applications cimport Application
 
 cdef int GetSkippedFilterCount()
 cdef Component MakeComponent(object component_pb, Application application,

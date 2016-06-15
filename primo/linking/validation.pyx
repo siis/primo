@@ -20,20 +20,20 @@ Goodman-Kruskal's gamma."""
 cimport cython
 cimport numpy as np
 
-from linking.components cimport GetSkippedFilterCount
-from linking.intent_data cimport AddPreciseIntent
-from linking.intent_data cimport AddImpreciseIntent
-from linking.intent_imprecisions cimport MakeRandomImprecision
-from linking.intent_imprecisions cimport UpdateImpreciseDistribution
-from linking.intents cimport ComponentIntent
+from primo.linking.components cimport GetSkippedFilterCount
+from primo.linking.intent_data cimport AddPreciseIntent
+from primo.linking.intent_data cimport AddImpreciseIntent
+from primo.linking.intent_imprecisions cimport MakeRandomImprecision
+from primo.linking.intent_imprecisions cimport UpdateImpreciseDistribution
+from primo.linking.intents cimport ComponentIntent
 
 import logging
 import numpy as np
 
 import gflags
 
-from linking import intent_data
-import linking.find_links
+from primo.linking import intent_data
+import primo.linking.find_links
 
 
 FLAGS = gflags.FLAGS
@@ -72,7 +72,7 @@ cdef void PerformValidation(list intents, bint skip_empty, set components,
 
   # The ground truth contains all links with "full confidence" (priority = 100).
   # Any link not in this set has priority 0.
-  ground_truth, _, _, _, _, _, _ = linking.find_links.FindLinksForIntents(
+  ground_truth, _, _, _, _, _, _ = primo.linking.find_links.FindLinksForIntents(
       precise, set(), skip_empty, components, intent_filters, False, False)
 
   # Store the ground truth targets into a set for efficient lookup.
@@ -135,7 +135,7 @@ cdef void PerformValidation(list intents, bint skip_empty, set components,
             still_precise += 1
 
         validation = new_validation
-        intent_links, _, _, _, _, _, _ = linking.find_links.FindLinksForIntents(
+        intent_links, _, _, _, _, _, _ = primo.linking.find_links.FindLinksForIntents(
             training, validation, skip_empty, components, intent_filters, True,
             True)
 

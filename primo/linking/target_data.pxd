@@ -15,9 +15,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from linking.applications cimport Application
-from linking.components cimport Component
-from linking.intent_filters cimport IntentFilter
+from primo.linking.applications cimport Application
+from primo.linking.components cimport Component
+from primo.linking.intent_filters cimport IntentFilter
 
 cdef void PrepareForQueries(set applications)
 cdef int GetExportedComponentCount(int kind, set search_space=?)

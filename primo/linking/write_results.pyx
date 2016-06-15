@@ -22,8 +22,8 @@ cimport numpy as np
 import bloscpack
 import numpy as np
 
-from linking.intents cimport ComponentIntent
-from linking.intents cimport Intent
+from primo.linking.intents cimport ComponentIntent
+from primo.linking.intents cimport Intent
 
 
 DTYPE = [('intent', 'int32'),

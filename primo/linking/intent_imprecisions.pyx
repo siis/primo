@@ -17,12 +17,12 @@
 """Module for recording field imprecision distribution and for introducing
 imprecise fields according to a given distribution."""
 
-from linking.intents cimport Intent
+from primo.linking.intents cimport Intent
 
 from collections import Counter
 import random
 
-include 'linking/constants.pxi'
+include 'primo/linking/constants.pxi'
 
 
 # Explicit Intent imprecision counters.

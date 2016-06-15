@@ -22,10 +22,12 @@ from distutils.core import setup
 from distutils.extension import Extension
 
 
-SRC_DIR = 'linking'
+SRC_DIR = 'primo/linking'
 
 
-if glob.glob(os.path.join(SRC_DIR, '*.pyx')):
+if glob.glob(os.path.join(SRC_DIR, '*.c')):
+  use_cython = False
+elif glob.glob(os.path.join(SRC_DIR, '*.pyx')):
   try:
     from Cython.Distutils import build_ext
     use_cython = True
@@ -63,8 +65,9 @@ EMAIL = 'octeau@cse.psu.edu'
 
 LICENSE = 'Apache 2.0'
 
-PACKAGES = [SRC_DIR]
-SCRIPTS = ['primo.py', 'make_plots_and_stats.py', 'performance_experiments.py']
+PACKAGES = ['primo', 'primo.linking']
+SCRIPTS = ['bin/primo', 'bin/make_plots_and_stats',
+      'bin/performance_experiments']
 CMD_CLASS = {}
 OPTIONS = {}
 
@@ -90,7 +93,7 @@ if __name__ == "__main__":
     extension = '.c'
 
   # Get the list of extensions.
-  ext_names = ScanDir('linking', extension)
+  ext_names = ScanDir('primo', extension)
 
   # And build up the set of Extension objects.
   extensions = [MakeExtension(name, extension) for name in ext_names]

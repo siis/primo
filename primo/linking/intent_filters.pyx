@@ -16,10 +16,10 @@
 # limitations under the License.
 """Class and factory for Intent Filters."""
 
-from linking.components cimport Component
-from linking.target_data cimport AddIntentFilterAttributes
+from primo.linking.components cimport Component
+from primo.linking.target_data cimport AddIntentFilterAttributes
 
-from linking import ic3_data_pb2
+from primo.linking import ic3_data_pb2
 
 
 _ACTION_MAIN = u'android.intent.action.MAIN'
@@ -170,7 +170,7 @@ cdef class IntentFilter(object):
     """
 
     return (self.actions and len(self.actions) >= 1
-            and IntentFilter._ACTION_MAIN in self.actions)
+            _ACTION_MAIN in self.actions)
 
   def print_end_point(self):
     print "package",self.component.application_id

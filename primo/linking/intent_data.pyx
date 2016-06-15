@@ -16,17 +16,17 @@
 # limitations under the License.
 """Global Intent maps and constants."""
 
-from linking.intents cimport ComponentIntent
-from linking.intents cimport Intent
+from primo.linking.intents cimport ComponentIntent
+from primo.linking.intents cimport Intent
 
 import logging
 
-from linking.target_data import BASE_TYPE
-from linking.target_data import CLASS
-from linking.target_data import PACKAGE
-from linking import ic3_data_pb2
+from primo.linking.target_data import BASE_TYPE
+from primo.linking.target_data import CLASS
+from primo.linking.target_data import PACKAGE
+from primo.linking import ic3_data_pb2
 
-include 'linking/constants.pxi'
+include 'primo/linking/constants.pxi'
 
 
 LOGGER = logging.getLogger(__name__)

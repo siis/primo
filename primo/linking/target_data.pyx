@@ -23,10 +23,10 @@ DEF DYNAMIC_RECEIVER = 3
 from collections import Counter
 import logging
 
-from linking.attribute_matching cimport AttributeMap
+from primo.linking.attribute_matching cimport AttributeMap
 
-from linking.util import Powerset
-from linking import ic3_data_pb2
+from primo.linking.util import Powerset
+from primo.linking import ic3_data_pb2
 
 
 LOGGER = logging.getLogger(__name__)
