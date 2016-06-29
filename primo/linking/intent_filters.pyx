@@ -170,7 +170,7 @@ cdef class IntentFilter(object):
     """
 
     return (self.actions and len(self.actions) >= 1
-            _ACTION_MAIN in self.actions)
+            and _ACTION_MAIN in self.actions)
 
   def print_end_point(self):
     print "package",self.component.application_id
