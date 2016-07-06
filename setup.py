@@ -24,6 +24,24 @@ from distutils.extension import Extension
 
 SRC_DIR = 'primo/linking'
 
+NAME = 'primo'
+VERSION = '0.1.0'
+DESCR = 'ICC resolution package.'
+URL = 'http://siis.cse.psu.edu/primo/'
+
+AUTHOR = 'Damien Octeau'
+EMAIL = 'octeau@cse.psu.edu'
+
+LICENSE = 'Apache 2.0'
+
+REQUIRES = ['numpy', 'scipy', 'protobuf', 'python-gflags', 'bloscpack']
+
+PACKAGES = ['primo', 'primo.linking']
+SCRIPTS = ['bin/primo', 'bin/make_plots_and_stats',
+      'bin/performance_experiments']
+CMD_CLASS = {}
+OPTIONS = {}
+
 
 if glob.glob(os.path.join(SRC_DIR, '*.c')):
   use_cython = False
@@ -55,22 +73,6 @@ def ScanDir(directory, file_extension, files=[]):
       ScanDir(file_path, file_extension, files)
   return files
 
-NAME = 'primo'
-VERSION = '0.1.0'
-DESCR = 'ICC resolution package.'
-URL = 'http://siis.cse.psu.edu/primo/'
-
-AUTHOR = 'Damien Octeau'
-EMAIL = 'octeau@cse.psu.edu'
-
-LICENSE = 'Apache 2.0'
-
-PACKAGES = ['primo', 'primo.linking']
-SCRIPTS = ['bin/primo', 'bin/make_plots_and_stats',
-      'bin/performance_experiments']
-CMD_CLASS = {}
-OPTIONS = {}
-
 
 def MakeExtension(ext_name, file_extension):
   """Generates an Extension object from its dotted name."""
@@ -84,11 +86,13 @@ def MakeExtension(ext_name, file_extension):
       extra_link_args = ['-g'],
       )
 
+
 if __name__ == "__main__":
   if use_cython:
     extension = '.pyx'
     CMD_CLASS['build_ext'] = build_ext
     OPTIONS['build_ext'] = {'inplace':True}
+    REQUIRES.append('Cython')
   else:
     extension = '.c'
 
@@ -107,6 +111,7 @@ if __name__ == "__main__":
         url=URL,
         scripts=SCRIPTS,
         license=LICENSE,
+        install_requires=REQUIRES,
         cmdclass=CMD_CLASS,
         ext_modules=extensions,
         options=OPTIONS
