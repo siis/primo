@@ -18,8 +18,7 @@
 import glob
 import os
 import numpy
-from distutils.core import setup
-from distutils.extension import Extension
+from setuptools import setup, Extension
 
 
 SRC_DIR = 'primo/linking'
@@ -42,24 +41,23 @@ SCRIPTS = ['bin/primo', 'bin/make_plots_and_stats',
 CMD_CLASS = {}
 OPTIONS = {}
 
-
 if glob.glob(os.path.join(SRC_DIR, '*.c')):
-  use_cython = False
-elif glob.glob(os.path.join(SRC_DIR, '*.pyx')):
-  try:
-    from Cython.Distutils import build_ext
-    use_cython = True
-    #from Cython.Compiler import Options
-    #Options.annotate = True
-    # Options.directive_defaults['profile'] = True
-  except ImportError:
-    use_cython = False
-else:
   # We don't ship .pyx files with a source distribution so that users don't have
   # to cythonize everything again.
   # See http://docs.cython.org/src/reference/compilation.html#distributing-cython-modules.
-  use_cython = False
-
+  USE_CYTHON = False
+elif glob.glob(os.path.join(SRC_DIR, '*.pyx')):
+  try:
+    from Cython.Build import cythonize
+    from setuptools.command.build_ext import build_ext
+    USE_CYTHON = True
+  except ImportError as e:
+    # It won't be possible to compile or cythonize files.
+    print(e)
+    exit(1)
+else:
+  print("No .pyx or .c files.")
+  exit(1)
 
 def ScanDir(directory, file_extension, files=[]):
   """Scans the 'linking' directory for extension files, converting
@@ -73,7 +71,6 @@ def ScanDir(directory, file_extension, files=[]):
       ScanDir(file_path, file_extension, files)
   return files
 
-
 def MakeExtension(ext_name, file_extension):
   """Generates an Extension object from its dotted name."""
 
@@ -86,9 +83,8 @@ def MakeExtension(ext_name, file_extension):
       extra_link_args = ['-g'],
       )
 
-
 if __name__ == "__main__":
-  if use_cython:
+  if USE_CYTHON:
     extension = '.pyx'
     CMD_CLASS['build_ext'] = build_ext
     OPTIONS['build_ext'] = {'inplace':True}
@@ -101,6 +97,8 @@ if __name__ == "__main__":
 
   # And build up the set of Extension objects.
   extensions = [MakeExtension(name, extension) for name in ext_names]
+  if USE_CYTHON:
+      extensions = cythonize(extensions)
 
   setup(packages=PACKAGES,
         name=NAME,
