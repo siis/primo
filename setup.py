@@ -98,7 +98,7 @@ if __name__ == "__main__":
   # And build up the set of Extension objects.
   extensions = [MakeExtension(name, extension) for name in ext_names]
   if USE_CYTHON:
-      extensions = cythonize(extensions)
+    extensions = cythonize(extensions)
 
   setup(packages=PACKAGES,
         name=NAME,
