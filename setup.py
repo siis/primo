@@ -18,30 +18,46 @@
 import glob
 import os
 import numpy
-from distutils.core import setup
-from distutils.extension import Extension
+from setuptools import setup, Extension
 
 
 SRC_DIR = 'primo/linking'
 
+NAME = 'primo'
+VERSION = '0.1.0'
+DESCR = 'ICC resolution package.'
+URL = 'http://siis.cse.psu.edu/primo/'
+
+AUTHOR = 'Damien Octeau'
+EMAIL = 'octeau@cse.psu.edu'
+
+LICENSE = 'Apache 2.0'
+
+REQUIRES = ['numpy', 'scipy', 'protobuf', 'python-gflags', 'bloscpack']
+
+PACKAGES = ['primo', 'primo.linking']
+SCRIPTS = ['bin/primo', 'bin/make_plots_and_stats',
+      'bin/performance_experiments']
+CMD_CLASS = {}
+OPTIONS = {}
 
 if glob.glob(os.path.join(SRC_DIR, '*.c')):
-  use_cython = False
-elif glob.glob(os.path.join(SRC_DIR, '*.pyx')):
-  try:
-    from Cython.Distutils import build_ext
-    use_cython = True
-    #from Cython.Compiler import Options
-    #Options.annotate = True
-    # Options.directive_defaults['profile'] = True
-  except ImportError:
-    use_cython = False
-else:
   # We don't ship .pyx files with a source distribution so that users don't have
   # to cythonize everything again.
   # See http://docs.cython.org/src/reference/compilation.html#distributing-cython-modules.
-  use_cython = False
-
+  USE_CYTHON = False
+elif glob.glob(os.path.join(SRC_DIR, '*.pyx')):
+  try:
+    from Cython.Build import cythonize
+    from setuptools.command.build_ext import build_ext
+    USE_CYTHON = True
+  except ImportError as e:
+    # It won't be possible to compile or cythonize files.
+    print(e)
+    exit(1)
+else:
+  print("No .pyx or .c files.")
+  exit(1)
 
 def ScanDir(directory, file_extension, files=[]):
   """Scans the 'linking' directory for extension files, converting
@@ -54,23 +70,6 @@ def ScanDir(directory, file_extension, files=[]):
     elif os.path.isdir(file_path):
       ScanDir(file_path, file_extension, files)
   return files
-
-NAME = 'primo'
-VERSION = '0.1.0'
-DESCR = 'ICC resolution package.'
-URL = 'http://siis.cse.psu.edu/primo/'
-
-AUTHOR = 'Damien Octeau'
-EMAIL = 'octeau@cse.psu.edu'
-
-LICENSE = 'Apache 2.0'
-
-PACKAGES = ['primo', 'primo.linking']
-SCRIPTS = ['bin/primo', 'bin/make_plots_and_stats',
-      'bin/performance_experiments']
-CMD_CLASS = {}
-OPTIONS = {}
-
 
 def MakeExtension(ext_name, file_extension):
   """Generates an Extension object from its dotted name."""
@@ -85,10 +84,11 @@ def MakeExtension(ext_name, file_extension):
       )
 
 if __name__ == "__main__":
-  if use_cython:
+  if USE_CYTHON:
     extension = '.pyx'
     CMD_CLASS['build_ext'] = build_ext
     OPTIONS['build_ext'] = {'inplace':True}
+    REQUIRES.append('Cython')
   else:
     extension = '.c'
 
@@ -97,6 +97,8 @@ if __name__ == "__main__":
 
   # And build up the set of Extension objects.
   extensions = [MakeExtension(name, extension) for name in ext_names]
+  if USE_CYTHON:
+    extensions = cythonize(extensions)
 
   setup(packages=PACKAGES,
         name=NAME,
@@ -107,6 +109,7 @@ if __name__ == "__main__":
         url=URL,
         scripts=SCRIPTS,
         license=LICENSE,
+        install_requires=REQUIRES,
         cmdclass=CMD_CLASS,
         ext_modules=extensions,
         options=OPTIONS
