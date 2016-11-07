@@ -40,7 +40,6 @@ from primo.linking import write_results
 
 FLAGS = gflags.FLAGS
 gflags.DEFINE_boolean('computeattributes', True, 'Compute attributes.')
-gflags.FLAGS(sys.argv)
 
 
 LOGGER = logging.getLogger(__name__)
