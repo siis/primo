@@ -38,9 +38,8 @@ from primo.linking import intents as intents_mod
 from primo.linking import write_results
 
 
-gflags.DEFINE_boolean('computeattributes', True, 'Compute attributes.')
-
 FLAGS = gflags.FLAGS
+gflags.DEFINE_boolean('computeattributes', True, 'Compute attributes.')
 
 
 LOGGER = logging.getLogger(__name__)
